@@ -14,7 +14,7 @@ using EbookSystem.Models;
 namespace EbookSystem.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
+    //[InitializeSimpleMembership]
     public class AccountController : Controller
     {
         //
@@ -79,7 +79,7 @@ namespace EbookSystem.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, propertyValues: new {model.FirstName, model.LastName,model.Email, model.Address,model.City,model.State,model.Zip,model.phone });
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using EbookSystem.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -23,6 +25,8 @@ namespace EbookSystem
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<UsersContext, EbookSystem.Migrations.Configuration.MigrationConfiguration>());
+            new UsersContext().UserProfiles.Find(1);
         }
     }
 }

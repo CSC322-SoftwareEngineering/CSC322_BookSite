@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Globalization;
 using System.Web.Security;
 
@@ -16,6 +17,11 @@ namespace EbookSystem.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 
     [Table("UserProfile")]
@@ -25,6 +31,14 @@ namespace EbookSystem.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public string Email { get; set; }
+       public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public string phone { get; set; }
     }
 
     public class RegisterExternalLoginModel
@@ -86,6 +100,21 @@ namespace EbookSystem.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string Email { get; set; }
+        [Required(ErrorMessage = "First Name is required")]
+        public string FirstName { get; set; }
+        [Required(ErrorMessage = "Last Name is required")]
+        public string LastName { get; set; }
+        [Required(ErrorMessage = "Address is required")]
+        public string Address { get; set; }
+        [Required(ErrorMessage = "City is required")]
+        public string City { get; set; }
+        [Required(ErrorMessage = "State is required")]
+        public string State { get; set; }
+        [Required(ErrorMessage = "Zip is required")]
+        public string Zip { get; set; }
+        public string phone { get; set; }
     }
 
     public class ExternalLogin
