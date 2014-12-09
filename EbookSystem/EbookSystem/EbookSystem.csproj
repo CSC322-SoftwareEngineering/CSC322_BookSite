@@ -295,6 +295,7 @@
     <Content Include="Views\Sell\Delete.cshtml" />
     <Content Include="Views\Browse\Index.cshtml" />
     <Content Include="Views\Browse\SearchIndex.cshtml" />
+    <Content Include="Views\Browse\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

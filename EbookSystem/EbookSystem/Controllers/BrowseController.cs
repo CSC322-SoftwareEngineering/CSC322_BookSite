@@ -34,5 +34,15 @@ namespace EbookSystem.Controllers
             return View(books);
         }
 
+        public ActionResult Details(int id = 0)
+        {
+            Sell book = db.Sell.Find(id);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            return View(book);
+        }
+
     }
 }
