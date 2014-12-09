@@ -18,7 +18,7 @@ namespace EbookSystem.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Sells.ToList());
+            return View(db.Sell.ToList());
         }
 
         //
@@ -26,7 +26,7 @@ namespace EbookSystem.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Sell sell = db.Sells.Find(id);
+            Sell sell = db.Sell.Find(id);
             if (sell == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace EbookSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Sells.Add(sell);
+                db.Sell.Add(sell);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -64,7 +64,7 @@ namespace EbookSystem.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Sell sell = db.Sells.Find(id);
+            Sell sell = db.Sell.Find(id);
             if (sell == null)
             {
                 return HttpNotFound();
@@ -93,7 +93,7 @@ namespace EbookSystem.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Sell sell = db.Sells.Find(id);
+            Sell sell = db.Sell.Find(id);
             if (sell == null)
             {
                 return HttpNotFound();
@@ -108,8 +108,8 @@ namespace EbookSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Sell sell = db.Sells.Find(id);
-            db.Sells.Remove(sell);
+            Sell sell = db.Sell.Find(id);
+            db.Sell.Remove(sell);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

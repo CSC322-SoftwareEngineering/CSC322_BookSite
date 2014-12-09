@@ -17,6 +17,6 @@ namespace EbookSystem.Models
     }
     public class SellDBContext : DbContext
     {
-        public DbSet<Sell> Sells { get; set; }
+        public DbSet<Sell> Sell { get; set; }
     }
 }
